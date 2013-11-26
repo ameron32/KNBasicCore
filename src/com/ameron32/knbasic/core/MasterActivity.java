@@ -100,10 +100,12 @@ public class MasterActivity
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getSupportMenuInflater().inflate(R.menu.activity_master, menu);
 
-		MenuItem settingsSlider = menu.add(Menu.NONE, SETTINGS_BUTTON_ID,
-				Menu.NONE, "Settings");
-		settingsSlider
-				.setIcon(R.drawable.abs__ic_menu_moreoverflow_normal_holo_dark);
+		// create my fake settings button to slide my settings slider
+		MenuItem settingsSlider = menu.add(Menu.NONE, 
+				SETTINGS_BUTTON_ID,
+				Menu.NONE, 
+				"Settings");
+		settingsSlider.setIcon(R.drawable.abs__ic_menu_moreoverflow_normal_holo_dark);
 		settingsSlider.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
 
 		return true;

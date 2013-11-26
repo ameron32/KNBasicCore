@@ -1,24 +1,28 @@
 package com.ameron32.knbasic.core;
 
-import com.ameron32.knbasic.core.Loader.Fonts;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.ameron32.knbasic.core.Loader.Fonts;
+import com.loopj.android.image.SmartImageView;
 
 public class MainActivity extends MasterActivity {
 
 	// random demonstration textview for custom fonts
-	TextView tv;
+	private TextView tv;
+
 	// store the current font sequence, needed for "Cycle Font"
 	private int currentFont = 0;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+
 		tv = (TextView) findViewById(R.id.tvHello);
 		
 		// create and configure new custom settings buttons in the sliding menu
@@ -61,13 +65,47 @@ public class MainActivity extends MasterActivity {
 	}
 
 	// ------------------------------------------------------------------------------------------------
-	// DUMMY DATA FOR LISTVIEW
+	// TESTING, safe to remove
 	// ------------------------------------------------------------------------------------------------
 
 	private void performTest() {
 		fillDummyData();
+		generateSmartImageView();
+		instanceChromeView();
 	}
-
+	
+	// ------------------------------------------------------------------------------------------------
+	// SMARTIMAGEVIEW testing
+	// ------------------------------------------------------------------------------------------------
+	
+	private int counter = 0;
+	private void generateSmartImageView() {
+		final LinearLayout primary = ((LinearLayout) findViewById(R.id.llPrimary));
+		primary.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				generateNewCard(primary, 10);
+			}
+		});
+		generateNewCard(primary, 10);
+	}
+	
+	private void generateNewCard(LinearLayout primary, int times) {
+		for (int i = 0; i < times; i++) {
+			SmartImageView smartImageView = new SmartImageView(this);
+			String[] cards = getResources().getStringArray(R.array.cards);
+			smartImageView
+					.setImageUrl("http://wow.tcgbrowser.com/images/cards/hd/"
+							+ cards[counter] + ".jpg");
+			primary.addView(smartImageView);
+			counter++;
+		}
+	}
+	
+	// ------------------------------------------------------------------------------------------------
+	// DUMMY DATA FOR LISTVIEW
+	// ------------------------------------------------------------------------------------------------
+	
 	private void fillDummyData() {
 		final String[] dummyList = new String[] { "Item 1", "Item 2", "Item 3",
 				"Item 4", "Item 5" };
@@ -84,5 +122,15 @@ public class MainActivity extends MasterActivity {
 				showMessage(item, false);
 			}
 		});
+	}
+	
+	// ------------------------------------------------------------------------------------------------
+	// CHROMEVIEW testing
+	// ------------------------------------------------------------------------------------------------
+	
+	private void instanceChromeView() {
+//		ChromeView chromeView = (ChromeView)findViewById(R.id.cvMain);
+//		chromeView.getSettings().setJavaScriptEnabled(true);
+//		chromeView.loadUrl("http://www.google.com");
 	}
 }

@@ -1,23 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    style="@style/Theme.Sherlock.Light"
     android:id="@+id/main_scrollview"
+    style="@style/Theme.Sherlock.Light"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_alignParentLeft="true"
     android:layout_alignParentTop="true" >
 
     <LinearLayout
+        android:id="@+id/llPrimary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal" >
+        android:orientation="vertical" >
 
         <TextView
             android:id="@+id/tvHello"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="ABCDE FGHIJ KLMNO PQRST UVWXYZ"
+            android:text="ABCDE"
             android:textSize="65dp" />
-        
     </LinearLayout>
+
 </ScrollView>
